@@ -3,6 +3,7 @@ import Header from './components/Header'
 import TabNavigation from './components/TabNavigation'
 import HomePanel from './panels/HomePanel'
 import TrimPanel from './panels/TrimPanel'
+import ProperPanel from './panels/ProperPanel'
 
 function App() {
   const [activeTab, setActiveTab] = useState('home')
@@ -14,7 +15,8 @@ function App() {
       <main className="max-w-7xl mx-auto p-6">
         {activeTab === 'home' && <HomePanel />}
         {activeTab === 'trim' && <TrimPanel />}
-        {activeTab !== 'home' && activeTab !== 'trim' && (
+        {activeTab === 'proper' && <ProperPanel />}
+        {activeTab !== 'home' && activeTab !== 'trim' && activeTab !== 'proper' && (
           <p className="text-gray-400">Panel: {activeTab} (coming soon)</p>
         )}
       </main>

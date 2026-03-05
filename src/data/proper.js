@@ -1,0 +1,57 @@
+export const properConfig = {
+  id: 'proper',
+  label: 'PROPER',
+  columns: [
+    { header: 'Case ID', key: 'caseId' },
+    { header: 'Last Name (messy)', key: 'lastMessy' },
+    { header: 'First Name (messy)', key: 'firstMessy' },
+    { header: 'Last (fixed)', key: 'lastFixed' },
+    { header: 'First (fixed)', key: 'firstFixed' },
+  ],
+  resultColumns: ['lastFixed', 'firstFixed'],
+  rows: [
+    { caseId: 'C-1001', lastMessy: 'JOHNSON', firstMessy: 'maria', lastFixed: 'Johnson', firstFixed: 'Maria' },
+    { caseId: 'C-1002', lastMessy: 'garcia', firstMessy: 'ROBERTO', lastFixed: 'Garcia', firstFixed: 'Roberto' },
+    { caseId: 'C-1004', lastMessy: 'WASHINGTON-COLE', firstMessy: 'denise', lastFixed: 'Washington-Cole', firstFixed: 'Denise' },
+    { caseId: 'C-1006', lastMessy: 'van der Berg', firstMessy: 'ANNA', lastFixed: 'Van Der Berg', firstFixed: 'Anna' },
+    { caseId: 'C-1008', lastMessy: 'martinez-LOPEZ', firstMessy: 'SOFIA', lastFixed: 'Martinez-Lopez', firstFixed: 'Sofia' },
+    { caseId: 'C-1013', lastMessy: 'DE LA CRUZ', firstMessy: 'miguel', lastFixed: 'De La Cruz', firstFixed: 'Miguel' },
+  ],
+  steps: [
+    {
+      highlight: ['B2', 'B3', 'B4', 'B5', 'B6', 'B7'],
+      formula: '',
+      explanation: 'Look at the last names in column B. Some are ALL CAPS (JOHNSON), some are all lowercase (garcia), and some are mixed (martinez-LOPEZ). This is typical of data imported from different court filing systems.',
+      teachingNote: null,
+      showResult: false,
+    },
+    {
+      highlight: ['D2'],
+      formula: '=PROPER(B2)',
+      explanation: 'Click cell D2. We enter =PROPER(B2) to capitalize the first letter of each word in the name.',
+      teachingNote: null,
+      showResult: false,
+    },
+    {
+      highlight: ['B2', 'D2'],
+      formula: '=PROPER(B2)',
+      explanation: '"JOHNSON" becomes "Johnson." PROPER capitalizes the first letter of every word and lowercases the rest.',
+      teachingNote: null,
+      showResult: true,
+    },
+    {
+      highlight: ['D5', 'D7'],
+      formula: '=PROPER(B5)',
+      explanation: 'Notice: PROPER capitalizes every word, which gives us "Van Der Berg" and "De La Cruz." In some naming conventions, "van" and "de" should be lowercase. PROPER gets you 90% there — fix exceptions manually.',
+      teachingNote: "PROPER isn't perfect — it capitalizes every word, which doesn't work for names like 'McDonald' or 'van der Berg.' But it gets you 90% of the way there, and you can fix exceptions manually. Better than fixing every name manually.",
+      showResult: true,
+    },
+    {
+      highlight: ['E2'],
+      formula: '=PROPER(TRIM(C2))',
+      explanation: 'Combine PROPER with TRIM to handle both problems at once: =PROPER(TRIM(C2)) removes extra spaces AND fixes capitalization in one formula.',
+      teachingNote: null,
+      showResult: true,
+    },
+  ],
+}
