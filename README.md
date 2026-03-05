@@ -1,6 +1,6 @@
 # Excel Formula Explorer
 
-An interactive web app that teaches law students Excel text functions through guided demos and hands-on sandboxes. Built for the Legal Technology course at Ohio State Moritz College of Law.
+An interactive web app that teaches law students Excel text functions through guided demos and hands-on sandboxes. Built for the 21st Century Lawyering course at Ohio State Moritz College of Law.
 
 **Live site:** https://spreadsheet-sandbox.onrender.com
 
