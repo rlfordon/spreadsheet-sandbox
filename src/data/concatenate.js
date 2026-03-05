@@ -1,0 +1,55 @@
+export const concatenateConfig = {
+  id: 'concatenate',
+  label: 'CONCATENATE',
+  columns: [
+    { header: 'First Name', key: 'first' },
+    { header: 'Last Name', key: 'last' },
+    { header: 'Full Name', key: 'fullName' },
+    { header: 'Opposing Party', key: 'opposing' },
+    { header: 'Case Caption', key: 'caption' },
+  ],
+  resultColumns: ['fullName', 'caption'],
+  rows: [
+    { first: 'Maria', last: 'Johnson', fullName: 'Maria Johnson', opposing: 'Acme Manufacturing, LLC', caption: 'Johnson v. Acme Manufacturing, LLC' },
+    { first: 'Roberto', last: 'Garcia', fullName: 'Roberto Garcia', opposing: 'State Farm Insurance Co.', caption: 'Garcia v. State Farm Insurance Co.' },
+    { first: 'Patrick', last: "O'Brien", fullName: "Patrick O'Brien", opposing: 'Columbus City Schools', caption: "O'Brien v. Columbus City Schools" },
+    { first: 'Denise', last: 'Washington-Cole', fullName: 'Denise Washington-Cole', opposing: 'Nationwide Mutual Insurance', caption: 'Washington-Cole v. Nationwide Mutual Insurance' },
+  ],
+  steps: [
+    {
+      highlight: ['A2', 'B2'],
+      formula: '',
+      explanation: 'We have first names in column A and last names in column B. We need to combine them into a full name.',
+      teachingNote: null,
+      showResult: false,
+    },
+    {
+      highlight: ['C2'],
+      formula: '=A2 & " " & B2',
+      explanation: 'Click cell C2. We use the & operator to join text: =A2 & " " & B2. The " " adds a space between first and last name. Result: "Maria Johnson."',
+      teachingNote: null,
+      showResult: true,
+    },
+    {
+      highlight: ['C2'],
+      formula: '=CONCATENATE(A2, " ", B2)',
+      explanation: 'Alternative syntax: =CONCATENATE(A2, " ", B2) does exactly the same thing. The & operator is shorter; CONCATENATE is more readable. Use whichever you prefer.',
+      teachingNote: null,
+      showResult: true,
+    },
+    {
+      highlight: ['E2'],
+      formula: '=B2 & " v. " & D2',
+      explanation: 'Now build a case caption: =B2 & " v. " & D2. This gives us "Johnson v. Acme Manufacturing, LLC." It\'s just string building — you can put any text between the & operators.',
+      teachingNote: "This is how mail merge works under the hood. Every 'Dear [First Name]' letter is just concatenation.",
+      showResult: true,
+    },
+    {
+      highlight: ['C2', 'C3', 'C4', 'C5', 'E2', 'E3', 'E4', 'E5'],
+      formula: '=TEXTJOIN(", ", TRUE, A2, B2)',
+      explanation: 'Copy the formulas down. TEXTJOIN is another option for joining with a delimiter: =TEXTJOIN(", ", TRUE, A2, B2) — useful when you have many columns to combine.',
+      teachingNote: null,
+      showResult: true,
+    },
+  ],
+}

@@ -4,6 +4,7 @@ import TabNavigation from './components/TabNavigation'
 import HomePanel from './panels/HomePanel'
 import TrimPanel from './panels/TrimPanel'
 import ProperPanel from './panels/ProperPanel'
+import ConcatenatePanel from './panels/ConcatenatePanel'
 
 function App() {
   const [activeTab, setActiveTab] = useState('home')
@@ -16,7 +17,8 @@ function App() {
         {activeTab === 'home' && <HomePanel />}
         {activeTab === 'trim' && <TrimPanel />}
         {activeTab === 'proper' && <ProperPanel />}
-        {activeTab !== 'home' && activeTab !== 'trim' && activeTab !== 'proper' && (
+        {activeTab === 'concatenate' && <ConcatenatePanel />}
+        {activeTab !== 'home' && activeTab !== 'trim' && activeTab !== 'proper' && activeTab !== 'concatenate' && (
           <p className="text-gray-400">Panel: {activeTab} (coming soon)</p>
         )}
       </main>
