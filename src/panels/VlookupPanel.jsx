@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import FormulaBar from '../components/FormulaBar'
 import StepControls from '../components/StepControls'
 import TeachingNote from '../components/TeachingNote'
@@ -71,6 +71,19 @@ const steps = [
 export default function VlookupPanel() {
   const [stepIndex, setStepIndex] = useState(0)
   const step = steps[stepIndex]
+
+  const handleKeyDown = useCallback((e) => {
+    if (e.key === 'ArrowLeft') {
+      setStepIndex(i => Math.max(0, i - 1))
+    } else if (e.key === 'ArrowRight') {
+      setStepIndex(i => Math.min(steps.length - 1, i + 1))
+    }
+  }, [])
+
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [handleKeyDown])
 
   return (
     <div className="space-y-6">

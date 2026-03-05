@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import FormulaBar from './FormulaBar'
 import SpreadsheetGrid from './SpreadsheetGrid'
 import StepControls from './StepControls'
@@ -7,6 +7,19 @@ import TeachingNote from './TeachingNote'
 export default function DemoPanel({ config }) {
   const [stepIndex, setStepIndex] = useState(0)
   const step = config.steps[stepIndex]
+
+  const handleKeyDown = useCallback((e) => {
+    if (e.key === 'ArrowLeft') {
+      setStepIndex(i => Math.max(0, i - 1))
+    } else if (e.key === 'ArrowRight') {
+      setStepIndex(i => Math.min(config.steps.length - 1, i + 1))
+    }
+  }, [config.steps.length])
+
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [handleKeyDown])
 
   // Determine which result columns to show based on steps up to current
   const visibleResults = config.steps

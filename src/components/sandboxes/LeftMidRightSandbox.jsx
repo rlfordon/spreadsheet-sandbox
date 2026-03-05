@@ -95,7 +95,7 @@ export default function LeftMidRightSandbox() {
       </div>
 
       {/* Parameter inputs */}
-      <div className="flex gap-3 items-center mb-3">
+      <div className="flex flex-wrap gap-3 items-center mb-3">
         {mode === 'left' && (
           <label className="text-sm text-gray-600 flex items-center gap-2">
             Number of characters:

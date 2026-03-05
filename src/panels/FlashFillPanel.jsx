@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import FormulaBar from '../components/FormulaBar'
 import StepControls from '../components/StepControls'
 import TeachingNote from '../components/TeachingNote'
@@ -45,6 +45,19 @@ export default function FlashFillPanel() {
   const [visibleCount, setVisibleCount] = useState(0)
   const step = steps[stepIndex]
   const example = flashFillExamples[step.exampleIndex]
+
+  const handleKeyDown = useCallback((e) => {
+    if (e.key === 'ArrowLeft') {
+      setStepIndex(i => Math.max(0, i - 1))
+    } else if (e.key === 'ArrowRight') {
+      setStepIndex(i => Math.min(steps.length - 1, i + 1))
+    }
+  }, [])
+
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [handleKeyDown])
 
   // Reset and animate when step changes
   useEffect(() => {

@@ -26,9 +26,6 @@ function App() {
         {activeTab === 'flashfill' && <FlashFillPanel />}
         {activeTab === 'vlookup' && <VlookupPanel />}
         {activeTab === 'countif' && <CountifPanel />}
-        {activeTab !== 'home' && activeTab !== 'trim' && activeTab !== 'proper' && activeTab !== 'concatenate' && activeTab !== 'leftmidright' && activeTab !== 'flashfill' && activeTab !== 'vlookup' && activeTab !== 'countif' && (
-          <p className="text-gray-400">Panel: {activeTab} (coming soon)</p>
-        )}
       </main>
     </div>
   )
