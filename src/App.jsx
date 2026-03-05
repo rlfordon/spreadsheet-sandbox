@@ -6,6 +6,7 @@ import TrimPanel from './panels/TrimPanel'
 import ProperPanel from './panels/ProperPanel'
 import ConcatenatePanel from './panels/ConcatenatePanel'
 import LeftMidRightPanel from './panels/LeftMidRightPanel'
+import FlashFillPanel from './panels/FlashFillPanel'
 
 function App() {
   const [activeTab, setActiveTab] = useState('home')
@@ -20,7 +21,8 @@ function App() {
         {activeTab === 'proper' && <ProperPanel />}
         {activeTab === 'concatenate' && <ConcatenatePanel />}
         {activeTab === 'leftmidright' && <LeftMidRightPanel />}
-        {activeTab !== 'home' && activeTab !== 'trim' && activeTab !== 'proper' && activeTab !== 'concatenate' && activeTab !== 'leftmidright' && (
+        {activeTab === 'flashfill' && <FlashFillPanel />}
+        {activeTab !== 'home' && activeTab !== 'trim' && activeTab !== 'proper' && activeTab !== 'concatenate' && activeTab !== 'leftmidright' && activeTab !== 'flashfill' && (
           <p className="text-gray-400">Panel: {activeTab} (coming soon)</p>
         )}
       </main>
