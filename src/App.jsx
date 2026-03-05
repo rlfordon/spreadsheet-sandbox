@@ -7,6 +7,7 @@ import ProperPanel from './panels/ProperPanel'
 import ConcatenatePanel from './panels/ConcatenatePanel'
 import LeftMidRightPanel from './panels/LeftMidRightPanel'
 import FlashFillPanel from './panels/FlashFillPanel'
+import VlookupPanel from './panels/VlookupPanel'
 
 function App() {
   const [activeTab, setActiveTab] = useState('home')
@@ -22,7 +23,8 @@ function App() {
         {activeTab === 'concatenate' && <ConcatenatePanel />}
         {activeTab === 'leftmidright' && <LeftMidRightPanel />}
         {activeTab === 'flashfill' && <FlashFillPanel />}
-        {activeTab !== 'home' && activeTab !== 'trim' && activeTab !== 'proper' && activeTab !== 'concatenate' && activeTab !== 'leftmidright' && activeTab !== 'flashfill' && (
+        {activeTab === 'vlookup' && <VlookupPanel />}
+        {activeTab !== 'home' && activeTab !== 'trim' && activeTab !== 'proper' && activeTab !== 'concatenate' && activeTab !== 'leftmidright' && activeTab !== 'flashfill' && activeTab !== 'vlookup' && (
           <p className="text-gray-400">Panel: {activeTab} (coming soon)</p>
         )}
       </main>
