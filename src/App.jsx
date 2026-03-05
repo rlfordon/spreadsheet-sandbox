@@ -5,6 +5,7 @@ import HomePanel from './panels/HomePanel'
 import TrimPanel from './panels/TrimPanel'
 import ProperPanel from './panels/ProperPanel'
 import ConcatenatePanel from './panels/ConcatenatePanel'
+import LeftMidRightPanel from './panels/LeftMidRightPanel'
 
 function App() {
   const [activeTab, setActiveTab] = useState('home')
@@ -18,7 +19,8 @@ function App() {
         {activeTab === 'trim' && <TrimPanel />}
         {activeTab === 'proper' && <ProperPanel />}
         {activeTab === 'concatenate' && <ConcatenatePanel />}
-        {activeTab !== 'home' && activeTab !== 'trim' && activeTab !== 'proper' && activeTab !== 'concatenate' && (
+        {activeTab === 'leftmidright' && <LeftMidRightPanel />}
+        {activeTab !== 'home' && activeTab !== 'trim' && activeTab !== 'proper' && activeTab !== 'concatenate' && activeTab !== 'leftmidright' && (
           <p className="text-gray-400">Panel: {activeTab} (coming soon)</p>
         )}
       </main>
